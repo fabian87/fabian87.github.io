@@ -54,3 +54,7 @@ body {
     pointer-events: none;
     opacity: 0.5;
 }
+
+input {
+    font-size: 200%;
+}

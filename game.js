@@ -52,7 +52,7 @@ function checkForMatch() {
             secondGame();
         }
     } else {
-        setTimeout(unflipCards, 1000);
+        setTimeout(unflipCards, 500);
     }
 }
 
@@ -87,18 +87,22 @@ function guessNumber() {
     guesses++;
     if (this.innerText == correctNumber) {
         this.style.backgroundColor = 'green';
+        setTimeout(nextGame, 1000);
+    } else {
+        this.style.backgroundColor = 'red';
+    }
+
+    function nextGame() {
         document.getElementById('third').classList.remove('disabled');
         document.getElementById('second').innerText = 'E';
         thirdGame();
-    } else {
-        this.style.backgroundColor = 'red';
     }
 }
 
 
 ////////////////////////////////////////////////////////////////////////////
 
-const words = ['dragon'];
+const words = ['dragon', 'elefante', 'tigre', 'jirafa', 'perezoso', 'delfin', 'hipopotamo', 'ballena'];
 let correctWord;
 let wordGuesses = 0;
 let revealedWord;
@@ -133,12 +137,14 @@ function thirdGame() {
   gameBoard.appendChild(rowElement);
 
   const inputElement = document.createElement('input');
+  inputElement.name = 'input';
   inputElement.type = 'text';
   inputElement.maxLength = 1;
   inputElement.style.width = '50px';
   inputElement.style.border = '1px solid black';
-  inputElement.addEventListener('input', guessLetter);
+  inputElement.addEventListener('keyup', guessLetter);
   gameBoard.appendChild(inputElement);
+  document.getElementsByName('input')[0].focus();
 }
 
 function guessLetter() {
@@ -168,6 +174,41 @@ function guessLetter() {
 }
 
 function fourthGame() {
+    const gameBoard = document.getElementById('game-board');
+    gameBoard.innerHTML = '';
+    const game = document.createElement('h1')
+    game.innerHTML = 'Ya casi terminamos!';
+    game.classList.add('title');
+    gameBoard.appendChild(game);
+
+    const cardElement = document.createElement('div');
+    cardElement.classList.add('card');
+    cardElement.innerText = 'El';
+    gameBoard.appendChild(cardElement);
+    
+    const inputElement = document.createElement('input');
+    inputElement.name = 'input';
+    inputElement.type = 'text';
+    inputElement.style.border = '1px solid black';
+    inputElement.addEventListener('keypress', guessAnimal);
+    gameBoard.appendChild(inputElement);
+
+    const cardElement2 = document.createElement('div');
+    cardElement2.classList.add('card');
+    cardElement2.innerText = '\u03C0 O';
+    gameBoard.appendChild(cardElement2);
+    document.getElementsByName('input')[0].focus();
+}
+
+function guessAnimal() {
+    if (event.keyCode !== 13) return;
+    if (this.value.toLowerCase() === 'pollito') {
+        document.getElementById('last').innerText = 'A';
+        document.getElementById('game-board').innerHTML = '';
+    } else {
+        alert('¡Inténtalo de nuevo!');
+    }
+    this.value = '';
 }
 
 
