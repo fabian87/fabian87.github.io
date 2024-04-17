@@ -5,8 +5,18 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <h1>¿Nene o Nena?</h1>
+  <div class="container">
+    <div class="title">
+      <h1>¿Nene o Nena?</h1>
+      <div id="reveal">
+        <div id="first" class="card" onclick="firstBoard()"></div>
+        <div id="second" class="card disabled" onclick="secondGame()"></div>
+        <div id="third" class="card disabled" onclick="thirdGame()"></div>
+        <div id="last" class="card disabled" onclick="fourthGame()"></div>
+      </div>
+    </div>
     <div id="game-board"></div>
+  </div>
     <script src="game.js"></script>
 </body>
 </html>
