@@ -148,7 +148,7 @@ function thirdGame() {
 }
 
 function guessLetter() {
-  const guessedLetter = this.value;
+  const guessedLetter = this.value.toLowerCase();
   let letterFound = false;
   for (let i = 0; i < correctWord.length; i++) {
       if (correctWord[i] === guessedLetter) {
