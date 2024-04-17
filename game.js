@@ -195,7 +195,7 @@ function fourthGame() {
 
     const cardElement2 = document.createElement('div');
     cardElement2.classList.add('card');
-    cardElement2.innerText = '\u03C0 O';
+    cardElement2.innerText = '\u03A0 O';
     gameBoard.appendChild(cardElement2);
     document.getElementsByName('input')[0].focus();
 }
