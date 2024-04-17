@@ -206,7 +206,11 @@ function guessAnimal() {
     if (event.keyCode !== 13) return;
     if (this.value.trim().toLowerCase() === 'pollito') {
         document.getElementById('last').innerText = 'A';
-        document.getElementById('game-board').innerHTML = '';
+        const gameBoard = document.getElementById('game-board');
+        gameBoard.innerHTML = '';
+        const imageElement = document.createElement('img');
+        imageElement.src = './imagen.jpeg';
+        gameBoard.appendChild(imageElement);
     } else {
         attempts++;
         if (attempts >= 3) {
