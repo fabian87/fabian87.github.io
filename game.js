@@ -188,23 +188,54 @@ function fourthGame() {
     cardElement.innerText = 'El';
     gameBoard.appendChild(cardElement);
 
+    const inputWrapper = document.createElement('div');
+    inputWrapper.style.position = 'relative';
+
     const inputElement = document.createElement('input');
     inputElement.name = 'input';
     inputElement.type = 'text';
     inputElement.style.border = '1px solid black';
-    inputElement.addEventListener('keypress', guessAnimal);
-    gameBoard.appendChild(inputElement);
+    inputElement.style.paddingRight = '40px'; // Make room for the icon
+    inputElement.addEventListener('keypress', (event) => enterKeyPressed(event, inputElement));
+    inputWrapper.appendChild(inputElement);
+
+    // Create a submit icon
+    const submitIcon = document.createElement('i');
+    submitIcon.className = 'fa fa-paper-plane';
+    submitIcon.attributes['aria-hidden'] = 'true';
+    submitIcon.style.position = 'absolute';
+    submitIcon.style.right = '20px';
+    submitIcon.style.top = '50%';
+    submitIcon.style.transform = 'translateY(-50%)';
+    submitIcon.style.cursor = 'pointer';
+    submitIcon.style.fontSize = '40px';
+    submitIcon.addEventListener('click', () => guessAnimal(inputElement));
+    inputWrapper.appendChild(submitIcon);
+
+    gameBoard.appendChild(inputWrapper);
 
     const cardElement2 = document.createElement('div');
     cardElement2.classList.add('card');
-    cardElement2.innerText = '\u03C0 O';
+    cardElement2.innerText = '\u03C0';
+    cardElement2.style.fontSize = '650%';
     gameBoard.appendChild(cardElement2);
+
+    const cardElement3 = document.createElement('div');
+    cardElement3.classList.add('card');
+    cardElement3.innerText = 'O';
+    gameBoard.appendChild(cardElement3);
     document.getElementsByName('input')[0].focus();
 }
 
-function guessAnimal() {
-    if (event.keyCode !== 13) return;
-    if (this.value.trim().toLowerCase() === 'pollito') {
+function enterKeyPressed(event, inputElement) {
+    if (event.keyCode === 13) {
+        guessAnimal(inputElement);
+    }
+}
+
+function guessAnimal(inputElement) {
+    if (inputElement.value.trim().toLowerCase() === 'pollito') {
+        document.getElementsByClassName('title')[0].children.item(0).innerText = '¡Felicidades, es!';
         document.getElementById('last').innerText = 'A';
         const gameBoard = document.getElementById('game-board');
         gameBoard.innerHTML = '';

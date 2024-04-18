@@ -1,6 +1,6 @@
 /* styles.css */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Merienda', cursive;
     text-align: center;
     margin: auto;
     min-height: 100vh;
@@ -25,18 +25,21 @@ body {
     width: 530px;
 }
 .card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 95px;
     height: 120px;
     border: 1px solid #000;
     margin: 5px;
     text-align: center;
-    font-size: 220%;
+    font-size: 300%;
     line-height: 100px;
     cursor: pointer;
 }
 .number {
-    width: 47px;
-    height: 47px;
+    width: 57px;
+    height: 57px;
     border: 1px solid #000;
     margin: 2px;
     text-align: center;
