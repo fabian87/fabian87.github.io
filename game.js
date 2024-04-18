@@ -211,6 +211,7 @@ function guessAnimal() {
         const imageElement = document.createElement('img');
         imageElement.src = './imagen.jpeg';
         gameBoard.appendChild(imageElement);
+        confetti();
     } else {
         attempts++;
         if (attempts >= 3) {
@@ -222,5 +223,16 @@ function guessAnimal() {
     this.value = '';
 }
 
+
+function confetti() {
+    // Create a confetti configuration
+    var confettiSettings = { target: 'confetti' };
+    // Create a confetti instance
+    var confetti = new ConfettiGenerator(confettiSettings);
+
+    // Start the confetti animation
+    console.log('Confetti!');
+    confetti.render();
+}
 
 firstBoard();

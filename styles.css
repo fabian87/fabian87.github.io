@@ -61,3 +61,19 @@ body {
 input {
     font-size: 50px;
 }
+
+#confetti {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    overflow-clip-margin: content-box;
+    overflow-x: clip;
+    overflow-y: clip;
+    font-family: sans-serif;
+    text-wrap: nowrap;
+    white-space-collapse: collapse;
+    z-index: 1000;
+}
