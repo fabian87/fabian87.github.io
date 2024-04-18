@@ -210,6 +210,7 @@ function guessAnimal() {
         gameBoard.innerHTML = '';
         const imageElement = document.createElement('img');
         imageElement.src = './imagen.jpeg';
+        imageElement.className = 'animated-image';
         gameBoard.appendChild(imageElement);
         confetti();
     } else {
@@ -226,7 +227,7 @@ function guessAnimal() {
 
 function confetti() {
     // Create a confetti configuration
-    var confettiSettings = { target: 'confetti' };
+    var confettiSettings = { target: 'confetti', size: 1.8, max: 200};
     // Create a confetti instance
     var confetti = new ConfettiGenerator(confettiSettings);
 
